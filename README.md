@@ -126,6 +126,65 @@ Blockchain analytics companies, governments, surveillance contractors, malicious
 
 ---
 
+## Project Structure
+
+electrum-observatory/
+│
+├── README.md
+├── requirements.txt
+├── .gitignore
+│
+├── scanner/                         # 🔍 Módulos responsáveis pela interação com servidores Electrum
+│   ├── __init__.py
+│   ├── discover_servers.py          # Baixa lista de servidores públicos
+│   ├── electrum_client.py           # Cliente mínimo do protocolo Electrum (async)
+│   ├── metadata_scanner.py          # Coleta IP, versão, recursos, banner, TLS, etc.
+│   ├── behavior_fingerprint.py      # Envia queries de teste (balance, xpub, malformed requests)
+│   ├── tls_extract.py               # Extrai info de certificados TLS
+│   ├── geoip.py                     # Resolução GeoIP dos servidores
+│   └── save_results.py              # Salva JSON/CSV com dados coletados
+│
+├── analysis/                        # 📊 Scripts & notebooks de análise
+│   ├── notebooks/
+│   │   ├── 01_network_overview.ipynb
+│   │   ├── 02_behavior_clustering.ipynb
+│   │   ├── 03_honeypot_detection.ipynb
+│   │   └── 04_visualizations.ipynb
+│   ├── clustering.py                # scikit-learn (DBSCAN, KMeans) para clusterizar comportamentos
+│   ├── visualize.py                 # mapas, scatterplots, heatmaps
+│   ├── stats.py                     # métricas de centralização, distribuição, etc.
+│   └── merge_datasets.py            # une dados brutos em datasets processados
+│
+├── experiments/                     # 🧪 Configurações e scripts de execução de experimentos
+│   ├── config/
+│   │   ├── default.yaml
+│   │   ├── aggressive.yaml
+│   │   └── fingerprinting.yaml
+│   ├── run_scan.py                  # roda um scan completo de rede
+│   └── run_fingerprint.py           # roda testes controlados em cada servidor
+│
+├── tools/                           # 🔧 Utilitários auxiliares
+│   ├── export_map.py                # gera mapa mundial dos servidores
+│   ├── certificate_inspector.py     # script rápido para checar TLS de qualquer IP
+│   ├── address_generator.py         # gera P2PKH/P2WPKH/Taproot para testes
+│   └── timing_analyzer.py           # mede padrões de latência
+│
+├── data/                            # 📂 Dados coletados (provavelmente gitignored)
+│   ├── raw/                         # JSONs brutos por servidor
+│   ├── processed/                   # CSVs/Parquet limpos
+│   └── reports/                     # output final de análises
+│
+└── docs/                            # 📝 Documentação
+    ├── methodology.md
+    ├── threat_model.md
+    ├── honeypot_indicators.md
+    ├── network_topology.md
+    ├── server_metadata_fields.md
+    └── results_summary.md
+
+---
+
+
 ## Tools & Dependencies
 
 - Python 3.10+
