@@ -1,0 +1,1 @@
+# resolve: país, ASN, cidade, provedor de internet a partir do IP
