@@ -1,0 +1,29 @@
+# --- NETWORK / HTTP ---
+requests==2.31.0
+aiohttp==3.9.5
+
+# --- TLS / SSL / CRYPTO ---
+cryptography==42.0.5
+
+# --- GEOIP ---
+geoip2==4.8.0
+
+# --- DATA PROCESSING ---
+pandas==2.2.2
+numpy==1.26.4
+
+# --- MACHINE LEARNING ---
+scikit-learn==1.5.0
+
+# --- VISUALIZATION ---
+matplotlib==3.8.4
+seaborn==0.13.2
+
+# --- ENVIRONMENT / UTILITIES ---
+python-dotenv==1.0.1
+
+# --- ASYNC UTILITIES ---
+aiofiles==23.2.1
+
+# --- OPTIONAL: faster JSON ---
+ujson==5.10.0
