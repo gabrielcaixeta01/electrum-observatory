@@ -14,9 +14,9 @@ class ElectrumDiscovery:
 
     def __init__(
         self,
-        timeout: int = 7,
-        max_concurrent: int = 20,
-        max_depth: int = 5
+        timeout: int = 3,
+        max_concurrent: int = 200,
+        max_depth: int = 2
     ):
         self.timeout = timeout
         self.max_concurrent = max_concurrent
@@ -205,12 +205,15 @@ async def main():
         seed_port=50002
     )
 
+    # Save JSON
+    with open("peers.json", "w") as f:
+        json.dump(results, f, indent=2)
+
     print("\n==========================")
     print("   DISCOVERED PEERS")
     print("==========================\n")
 
-    for p in results:
-        print(p)
+    print(f"Total peers: {len(results)}")
 
 
 if __name__ == "__main__":
