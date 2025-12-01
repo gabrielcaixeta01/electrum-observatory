@@ -309,7 +309,3 @@ Each server receives:
     70–100 HIGH RISK
 
 "High Risk" servers are flagged for deeper forensic analysis.
-
-------------------------------------------------------------------------
-
-End of honeypot indicators.
