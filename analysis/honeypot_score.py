@@ -1,10 +1,4 @@
 import json
-import csv
-from statistics import mean, stdev
-
-# --------------------------------------------------------------
-# LOAD DATA
-# --------------------------------------------------------------
 
 def load_fingerprints(path="fingerprints.json"):
     with open(path, "r") as f:
@@ -18,17 +12,15 @@ def load_tls_clusters(path="tls_clusters_fingerprint.json"):
     with open(path, "r") as f:
         return json.load(f)
 
-# --------------------------------------------------------------
-# HONEYPOT SCORE RULES
-# --------------------------------------------------------------
 
+# honeypot scoring signals
 def compute_tls_signals(tls_entry, tls_cluster_size):
     score = 0
     signals = []
 
     # 1. Certificate reused across many hosts
     if tls_cluster_size >= 5:
-        score += min(tls_cluster_size * 2, 40)  # peso maior
+        score += min(tls_cluster_size * 2, 40)
         signals.append(f"reused_certificate_cluster_of_{tls_cluster_size}")
 
     # 2. Self-signed issuer
@@ -91,9 +83,6 @@ def compute_behavior_signals(fp_entry, cluster_map):
     return score, signals
 
 
-# --------------------------------------------------------------
-# MAIN SCORING PIPELINE
-# --------------------------------------------------------------
 
 def main():
     print("[+] Loading data...")
@@ -101,12 +90,10 @@ def main():
     tls_entries = load_tls()
     tls_clusters = load_tls_clusters()
 
-    # Build TLS fingerprint → cluster size map
     tls_fps = {}
     for c in tls_clusters:
         tls_fps[c["key"]] = c["count"]
 
-    # Build behavior clusters based on banner hash similarity
     behavior_clusters = {}
     for fp in fingerprints:
         banner_hash = fp["response_hash_banner"]
@@ -114,9 +101,7 @@ def main():
             behavior_clusters[banner_hash] = []
         behavior_clusters[banner_hash].append(fp)
 
-    # Index TLS by host
     tls_by_host = {c["host"]: c for c in tls_entries}
-
     results = []
 
     print("[+] Computing scores for each server...")
@@ -129,7 +114,6 @@ def main():
         total_score = 0
         signals = []
 
-        # ---------------- TLS signals ----------------
         if tls_info:
             fp_sha = tls_info["fingerprint_sha256"]
             tls_cluster_size = tls_fps.get(fp_sha, 1)
@@ -137,17 +121,15 @@ def main():
             s, sig = compute_tls_signals(tls_info, tls_cluster_size)
             total_score += s
             signals.extend(sig)
+
         else:
-            # No TLS? Suspicious
             total_score += 20
             signals.append("no_tls_certificate_detected")
 
-        # ---------------- Behavioral signals ----------------
         bscore, bsig = compute_behavior_signals(fp, behavior_clusters)
         total_score += bscore
         signals.extend(bsig)
 
-        # Normalize to 0–100
         final_score = min(total_score, 100)
 
         results.append({
@@ -162,18 +144,10 @@ def main():
             "signals": signals,
         })
 
-    # Save JSON
     with open("honeypot_scores.json", "w") as f:
         json.dump(results, f, indent=2)
 
-    # Save CSV
-    with open("honeypot_scores.csv", "w", newline="") as f:
-        writer = csv.writer(f)
-        writer.writerow(["host", "port", "honeypot_score", "risk_level", "signals"])
-        for r in results:
-            writer.writerow([r["host"], r["port"], r["honeypot_score"], r["risk_level"], ";".join(r["signals"])])
 
-    # Print top 20
     print("\n==============================")
     print("       TOP SUSPECTED")
     print("==============================\n")
@@ -187,7 +161,7 @@ def main():
         print("")
 
     print("[✓] Honeypot scoring complete.")
-    print("[✓] Files written: honeypot_scores.json, honeypot_scores.csv")
+    print("[✓] Files written: honeypot_scores.json\n")
 
 
 if __name__ == "__main__":

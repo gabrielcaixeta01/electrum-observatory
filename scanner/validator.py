@@ -3,7 +3,6 @@ import json
 import ssl
 import time
 from typing import Dict, List
-import csv
 
 
 class ElectrumValidator:
@@ -12,17 +11,8 @@ class ElectrumValidator:
         self.timeout = timeout
         self.sem = asyncio.Semaphore(max_concurrent)
 
-    # ----------------------------------------------------------------------
-    # CONNECT AND SEND ELECTRUM REQUEST
-    # ----------------------------------------------------------------------
 
     async def electrum_request(self, host: str, port: int):
-        """
-        Connects to an Electrum server via SSL or TCP and performs:
-        - server.version
-        - server.banner
-        """
-
         async with self.sem:
             ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
             ctx.check_hostname = False
@@ -31,7 +21,6 @@ class ElectrumValidator:
 
             start = time.time()
 
-            # Try SSL first
             try:
                 reader, writer = await asyncio.wait_for(
                     asyncio.open_connection(
@@ -43,8 +32,8 @@ class ElectrumValidator:
                     timeout=self.timeout
                 )
                 protocol = "ssl"
+
             except Exception:
-                # TCP fallback
                 try:
                     reader, writer = await asyncio.wait_for(
                         asyncio.open_connection(host, 50001),
@@ -54,12 +43,9 @@ class ElectrumValidator:
                 except Exception:
                     return None
 
-            # -----------------------------
-            # Electrum handshake
-            # -----------------------------
 
+            # electrum handshake, mimic a real electrum client
             try:
-                # Mimic a real Electrum client
                 req_version = {
                     "id": 1,
                     "method": "server.version",
@@ -71,8 +57,6 @@ class ElectrumValidator:
 
                 raw = await asyncio.wait_for(reader.readline(), timeout=self.timeout)
                 version_response = raw.decode().strip()
-
-                # Request banner
                 req_banner = {"id": 2, "method": "server.banner", "params": []}
 
                 writer.write((json.dumps(req_banner) + "\n").encode())
@@ -98,9 +82,6 @@ class ElectrumValidator:
             except Exception:
                 return None
 
-    # ----------------------------------------------------------------------
-    # PROCESS ALL PEERS
-    # ----------------------------------------------------------------------
 
     async def validate_all(self, peers: List[Dict]):
         tasks = []
@@ -115,12 +96,7 @@ class ElectrumValidator:
         return [r for r in results if r]
 
 
-# ----------------------------------------------------------------------
-# MAIN SCRIPT
-# ----------------------------------------------------------------------
-
 async def main():
-    # Load raw peers from discovery
     with open("peers.json", "r") as f:
         peers = json.load(f)
 
@@ -130,22 +106,15 @@ async def main():
 
     results = await validator.validate_all(peers)
 
-    # Save JSON
     with open("online_peers.json", "w") as f:
         json.dump(results, f, indent=2)
 
-    # Save CSV
-    with open("online_peers.csv", "w", newline="") as f:
-        writer = csv.writer(f)
-        writer.writerow(["host", "port", "protocol", "latency_ms"])
-        for r in results:
-            writer.writerow([r["host"], r["port"], r["protocol"], r["latency_ms"]])
 
     print("\n==============================")
     print("      VALIDATION RESULTS")
     print("==============================\n")
     print(f"[✓] Peers online: {len(results)}")
-    print(f"[✓] Output saved to online_peers.json and online_peers.csv\n")
+    print(f"[✓] Output saved to online_peers.json\n")
 
 
 if __name__ == "__main__":

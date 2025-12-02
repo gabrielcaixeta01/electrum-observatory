@@ -1,5 +1,4 @@
 import json
-import csv
 from collections import defaultdict
 
 
@@ -29,16 +28,6 @@ def group_by_subject(certs):
         subject = c["subject_cn"] or "UNKNOWN_SUBJECT"
         clusters[subject].append(c)
     return clusters
-
-
-def save_clusters_to_csv(clusters, path):
-    with open(path, "w", newline="") as f:
-        writer = csv.writer(f)
-        writer.writerow(["key", "count", "sample_hosts"])
-
-        for key, items in clusters.items():
-            hosts = [c["host"] for c in items]
-            writer.writerow([key, len(items), ";".join(hosts)])
 
 
 def save_clusters_to_json(clusters, path):
@@ -84,17 +73,14 @@ def main():
     # GROUP BY FINGERPRINT
     fp_clusters = group_by_fingerprint(certs)
     save_clusters_to_json(fp_clusters, "tls_clusters_fingerprint.json")
-    save_clusters_to_csv(fp_clusters, "tls_clusters_fingerprint.csv")
 
     # GROUP BY ISSUER
     issuer_clusters = group_by_issuer(certs)
     save_clusters_to_json(issuer_clusters, "tls_clusters_issuer.json")
-    save_clusters_to_csv(issuer_clusters, "tls_clusters_issuer.csv")
 
     # GROUP BY SUBJECT
     subject_clusters = group_by_subject(certs)
     save_clusters_to_json(subject_clusters, "tls_clusters_subject.json")
-    save_clusters_to_csv(subject_clusters, "tls_clusters_subject.csv")
 
     # PRINT SUMMARY
     print_cluster_summary("FINGERPRINT", fp_clusters)
@@ -114,7 +100,6 @@ def main():
     print("\n[✓] TLS clustering complete.")
     print("[✓] Files created:")
     print("    - tls_clusters_fingerprint.json")
-    print("    - tls_clusters_fingerprint.csv")
     print("    - tls_clusters_issuer.json")
     print("    - tls_clusters_issuer.csv")
     print("    - tls_clusters_subject.json")

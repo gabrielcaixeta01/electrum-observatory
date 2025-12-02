@@ -2,7 +2,6 @@ import asyncio
 import ssl
 import json
 import time
-import csv
 import hashlib
 from typing import Dict, List
 
@@ -13,14 +12,7 @@ class ElectrumFingerprint:
         self.timeout = timeout
         self.sem = asyncio.Semaphore(max_concurrent)
 
-    # ----------------------------------------------------------------------
-    # CONNECT AND SEND REQUEST
-    # ----------------------------------------------------------------------
-
     async def electrum_call(self, host: str, port: int, method: str, params: List):
-        """
-        Generic request sender: calls any Electrum JSON-RPC method.
-        """
         async with self.sem:
             ctx = ssl.SSLContext(ssl.PROTOCOL_TLS_CLIENT)
             ctx.check_hostname = False
@@ -47,7 +39,6 @@ class ElectrumFingerprint:
                 except:
                     return None, "connection_failed", None
 
-            # send request
             request = {
                 "id": 0,
                 "method": method,
@@ -75,16 +66,8 @@ class ElectrumFingerprint:
             except Exception as e:
                 return None, str(e), None
 
-    # ----------------------------------------------------------------------
-    # BUILD BEHAVIORAL FINGERPRINT
-    # ----------------------------------------------------------------------
 
     async def fingerprint_server(self, host: str, port: int):
-        """
-        Runs a battery of tests and returns a dictionary summarizing
-        the behavior of the server.
-        """
-
         fp = {
             "host": host,
             "port": port,
@@ -162,9 +145,6 @@ class ElectrumFingerprint:
 
         return fp
 
-    # ----------------------------------------------------------------------
-    # PROCESS ALL SERVERS
-    # ----------------------------------------------------------------------
 
     async def fingerprint_all(self, peers: List[Dict]):
         tasks = []
@@ -178,10 +158,6 @@ class ElectrumFingerprint:
         return results
 
 
-# ----------------------------------------------------------------------
-# MAIN PROGRAM
-# ----------------------------------------------------------------------
-
 async def main():
     with open("online_peers.json", "r") as f:
         peers = json.load(f)
@@ -191,22 +167,14 @@ async def main():
     fp = ElectrumFingerprint()
     results = await fp.fingerprint_all(peers)
 
-    # Save JSON
     with open("fingerprints.json", "w") as f:
         json.dump(results, f, indent=2)
-
-    # Save CSV
-    with open("fingerprints.csv", "w", newline="") as f:
-        writer = csv.writer(f)
-        writer.writerow(results[0].keys())
-        for r in results:
-            writer.writerow(r.values())
 
     print("\n==============================")
     print("      FINGERPRINT DONE")
     print("==============================\n")
     print(f"[✓] Servers fingerprinted: {len(results)}")
-    print("[✓] Files saved: fingerprints.json, fingerprints.csv\n")
+    print("[✓] Files saved: fingerprints.json\n")
 
 
 if __name__ == "__main__":
