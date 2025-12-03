@@ -56,11 +56,10 @@ def print_cluster_summary(title, clusters):
 
     sorted_clusters = sorted(clusters.items(), key=lambda x: len(x[1]), reverse=True)
 
-    # Print clusters with size > 1
     for key, items in sorted_clusters:
         if len(items) > 1:
             print(f"[+] Cluster '{key}' → {len(items)} servers")
-            for c in items[:5]:  # show only first 5 hosts for readability
+            for c in items[:5]:
                 print(f"    - {c['host']}:{c['port']}")
             print("")
 
@@ -70,30 +69,26 @@ def main():
 
     print(f"[+] Loaded {len(certs)} certificates")
 
-    # GROUP BY FINGERPRINT
+    # group by fingerprint, issuer, subject
     fp_clusters = group_by_fingerprint(certs)
     save_clusters_to_json(fp_clusters, "tls_clusters_fingerprint.json")
 
-    # GROUP BY ISSUER
     issuer_clusters = group_by_issuer(certs)
     save_clusters_to_json(issuer_clusters, "tls_clusters_issuer.json")
 
-    # GROUP BY SUBJECT
     subject_clusters = group_by_subject(certs)
     save_clusters_to_json(subject_clusters, "tls_clusters_subject.json")
 
-    # PRINT SUMMARY
     print_cluster_summary("FINGERPRINT", fp_clusters)
     print_cluster_summary("ISSUER", issuer_clusters)
     print_cluster_summary("SUBJECT", subject_clusters)
 
-    # TOP CLUSTER
     biggest_fp = max(fp_clusters.items(), key=lambda x: len(x[1]))
     print("\n==============================")
     print("     BIGGEST TLS CLUSTER")
     print("==============================\n")
-    print(f"[🔥] Fingerprint: {biggest_fp[0]}")
-    print(f"[🔥] Servers: {len(biggest_fp[1])}\n")
+    print(f"Fingerprint: {biggest_fp[0]}")
+    print(f"Servers: {len(biggest_fp[1])}\n")
     for c in biggest_fp[1][:20]:
         print(f" - {c['host']}:{c['port']}")
 

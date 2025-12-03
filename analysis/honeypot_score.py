@@ -18,24 +18,20 @@ def compute_tls_signals(tls_entry, tls_cluster_size):
     score = 0
     signals = []
 
-    # 1. Certificate reused across many hosts
     if tls_cluster_size >= 5:
         score += min(tls_cluster_size * 2, 40)
         signals.append(f"reused_certificate_cluster_of_{tls_cluster_size}")
 
-    # 2. Self-signed issuer
     issuer = tls_entry.get("issuer_cn", "")
     if issuer in [None, "", "UNKNOWN_ISSUER"]:
         score += 10
         signals.append("self_signed_or_unknown_issuer")
 
-    # 3. Strange subject CN
     subject = tls_entry.get("subject_cn", "")
     if subject in ["localhost", "UNKNOWN_SUBJECT", None, ""]:
         score += 5
         signals.append("suspicious_subject_CN")
 
-    # 4. Certificate validity anomalies
     not_after = tls_entry.get("not_after", "")
     if not_after and ("2035" in not_after or "2040" in not_after or "2050" in not_after):
         score += 15
@@ -48,22 +44,18 @@ def compute_behavior_signals(fp_entry, cluster_map):
     score = 0
     signals = []
 
-    # 1. Very fast responses (< 10ms)
     if fp_entry["latency_ping"] and fp_entry["latency_ping"] < 10:
         score += 10
         signals.append("suspicious_low_latency")
 
-    # 2. Very slow responses (> 2000ms)
     if fp_entry["latency_ping"] and fp_entry["latency_ping"] > 2000:
         score += 10
         signals.append("suspicious_high_latency")
 
-    # 3. Cannot respond to normal calls
     if fp_entry["error_history"] != "ok":
         score += 10
         signals.append("cannot_serve_history")
 
-    # 4. Does not support P2WPKH or P2TR (modern servers should)
     if not fp_entry["supports_p2wpkh"]:
         score += 3
         signals.append("missing_p2wpkh_support")
@@ -72,7 +64,6 @@ def compute_behavior_signals(fp_entry, cluster_map):
         score += 3
         signals.append("missing_taproot_support")
 
-    # 5. Behavioral cluster size from response hashes
     behavior_hash = fp_entry["response_hash_banner"]
     if behavior_hash in cluster_map:
         csize = len(cluster_map[behavior_hash])
