@@ -52,7 +52,10 @@ class TLSAnalyzer:
                 ssl_obj = writer.get_extra_info("ssl_object")
                 if ssl_obj is None:
                     writer.close()
-                    await writer.wait_closed()
+                    try:
+                        await asyncio.wait_for(writer.wait_closed(), timeout=self.timeout)
+                    except asyncio.TimeoutError:
+                        pass
                     return None
 
                 cert_info = ssl_obj.getpeercert()
@@ -81,7 +84,10 @@ class TLSAnalyzer:
                 not_after_iso = parse_cert_time(not_after)
 
                 writer.close()
-                await writer.wait_closed()
+                try:
+                    await asyncio.wait_for(writer.wait_closed(), timeout=self.timeout)
+                except asyncio.TimeoutError:
+                    pass
 
                 return {
                     "host": host,
@@ -95,7 +101,10 @@ class TLSAnalyzer:
 
             except Exception:
                 writer.close()
-                await writer.wait_closed()
+                try:
+                    await asyncio.wait_for(writer.wait_closed(), timeout=self.timeout)
+                except asyncio.TimeoutError:
+                    pass
                 return None
 
    
