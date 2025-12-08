@@ -1,8 +1,9 @@
 import json
+from pathlib import Path
 from collections import defaultdict
 
 
-def load_tls_certs(path="tls_certs.json"):
+def load_tls_certs(path="data/tls_certs/tls_certs.json"):
     with open(path, "r") as f:
         return json.load(f)
 
@@ -71,13 +72,16 @@ def main():
 
     # group by fingerprint, issuer, subject
     fp_clusters = group_by_fingerprint(certs)
-    save_clusters_to_json(fp_clusters, "tls_clusters_fingerprint.json")
+    output_dir = Path("data/tls_clusters")
+    output_dir.mkdir(parents=True, exist_ok=True)
+
+    save_clusters_to_json(fp_clusters, output_dir / "tls_clusters_fingerprint.json")
 
     issuer_clusters = group_by_issuer(certs)
-    save_clusters_to_json(issuer_clusters, "tls_clusters_issuer.json")
+    save_clusters_to_json(issuer_clusters, output_dir / "tls_clusters_issuer.json")
 
     subject_clusters = group_by_subject(certs)
-    save_clusters_to_json(subject_clusters, "tls_clusters_subject.json")
+    save_clusters_to_json(subject_clusters, output_dir / "tls_clusters_subject.json")
 
     print_cluster_summary("FINGERPRINT", fp_clusters)
     print_cluster_summary("ISSUER", issuer_clusters)
@@ -94,11 +98,11 @@ def main():
 
     print("\n[✓] TLS clustering complete.")
     print("[✓] Files created:")
-    print("    - tls_clusters_fingerprint.json")
-    print("    - tls_clusters_issuer.json")
-    print("    - tls_clusters_issuer.csv")
-    print("    - tls_clusters_subject.json")
-    print("    - tls_clusters_subject.csv")
+    print(f"    - {output_dir / 'tls_clusters_fingerprint.json'}")
+    print(f"    - {output_dir / 'tls_clusters_issuer.json'}")
+    print(f"    - {output_dir / 'tls_clusters_issuer.csv'}")
+    print(f"    - {output_dir / 'tls_clusters_subject.json'}")
+    print(f"    - {output_dir / 'tls_clusters_subject.csv'}")
 
 
 if __name__ == "__main__":
