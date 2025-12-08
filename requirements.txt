@@ -11,6 +11,9 @@ geoip2==4.8.0
 # --- DATA PROCESSING ---
 pandas==2.2.2
 numpy==1.26.4
+ipykernel==6.29.4
+jupyterlab==4.2.3
+
 
 # --- MACHINE LEARNING ---
 scikit-learn==1.5.0
