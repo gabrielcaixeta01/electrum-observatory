@@ -1,0 +1,11 @@
+# Ignore collected data JSON files but keep directory structure
+# Keep directories and non-json files (e.g. .gitkeep) under data/
+data/**/*.json
+data/*.json
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+.venv/

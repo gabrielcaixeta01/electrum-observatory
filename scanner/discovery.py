@@ -1,6 +1,7 @@
 import asyncio
 import ssl
 import json
+from pathlib import Path
 from typing import List, Dict
 from collections import deque
 
@@ -158,7 +159,11 @@ async def main():
         seed_port=50002
     )
 
-    with open("peers.json", "w") as f:
+    output_dir = Path("data/peers")
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / "peers.json"
+    
+    with open(output_path, "w") as f:
         json.dump(results, f, indent=2)
 
     print("\n==========================")
@@ -166,6 +171,7 @@ async def main():
     print("==========================\n")
 
     print(f"Total peers: {len(results)}")
+    print(f"Saved to: {output_path}")
 
 
 if __name__ == "__main__":

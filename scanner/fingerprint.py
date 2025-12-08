@@ -3,6 +3,7 @@ import ssl
 import json
 import time
 import hashlib
+from pathlib import Path
 from typing import Dict, List
 
 
@@ -167,14 +168,18 @@ async def main():
     fp = ElectrumFingerprint()
     results = await fp.fingerprint_all(peers)
 
-    with open("fingerprints.json", "w") as f:
+    output_dir = Path("data/fingerprints")
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / "fingerprints.json"
+    
+    with open(output_path, "w") as f:
         json.dump(results, f, indent=2)
 
     print("\n==============================")
     print("      FINGERPRINT DONE")
     print("==============================\n")
     print(f"[✓] Servers fingerprinted: {len(results)}")
-    print("[✓] Files saved: fingerprints.json\n")
+    print(f"[✓] Files saved: {output_path}\n")
 
 
 if __name__ == "__main__":

@@ -2,6 +2,7 @@ import asyncio
 import ssl
 import json
 import hashlib
+from pathlib import Path
 from typing import List, Dict, Optional
 from datetime import datetime
 
@@ -133,14 +134,18 @@ async def main():
 
     results = await analyzer.analyze_all(peers)
 
-    with open("tls_certs.json", "w") as f:
+    output_dir = Path("data/tls_certs")
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / "tls_certs.json"
+    
+    with open(output_path, "w") as f:
         json.dump(results, f, indent=2)
 
     print("\n==============================")
     print("      TLS ANALYSIS DONE")
     print("==============================\n")
     print(f"[✓] Certificates collected: {len(results)}")
-    print("[✓] Files saved: tls_certs.json\n")
+    print(f"[✓] Files saved: {output_path}\n")
 
 
 if __name__ == "__main__":

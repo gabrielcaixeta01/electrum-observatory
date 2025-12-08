@@ -2,6 +2,7 @@ import asyncio
 import json
 import ssl
 import time
+from pathlib import Path
 from typing import Dict, List
 
 
@@ -106,7 +107,11 @@ async def main():
 
     results = await validator.validate_all(peers)
 
-    with open("online_peers.json", "w") as f:
+    output_dir = Path("data/online_peers")
+    output_dir.mkdir(parents=True, exist_ok=True)
+    output_path = output_dir / "online_peers.json"
+    
+    with open(output_path, "w") as f:
         json.dump(results, f, indent=2)
 
 
@@ -114,7 +119,7 @@ async def main():
     print("      VALIDATION RESULTS")
     print("==============================\n")
     print(f"[✓] Peers online: {len(results)}")
-    print(f"[✓] Output saved to online_peers.json\n")
+    print(f"[✓] Output saved to {output_path}\n")
 
 
 if __name__ == "__main__":
