@@ -1,14 +1,14 @@
 import json
 
-def load_fingerprints(path="data/tls_clusters/fingerprints.json"):
+def load_fingerprints(path="data/fingerprints/fingerprints.json"):
     with open(path, "r") as f:
         return json.load(f)
 
-def load_tls(path="tls_certs.json"):
+def load_tls(path="data/tls_certs/tls_certs.json"):
     with open(path, "r") as f:
         return json.load(f)
 
-def load_tls_clusters(path="tls_clusters_fingerprint.json"):
+def load_tls_clusters(path="data/tls_clusters/tls_clusters_fingerprint.json"):
     with open(path, "r") as f:
         return json.load(f)
 
