@@ -126,7 +126,7 @@ class TLSAnalyzer:
 
 
 async def main():
-    with open("online_peers.json", "r") as f:
+    with open("data/online_peers/online_peers.json", "r") as f:
         peers = json.load(f)
 
     analyzer = TLSAnalyzer()

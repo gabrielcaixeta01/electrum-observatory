@@ -98,7 +98,7 @@ class ElectrumValidator:
 
 
 async def main():
-    with open("peers.json", "r") as f:
+    with open("data/peers/peers.json", "r") as f:
         peers = json.load(f)
 
     validator = ElectrumValidator()

@@ -2,7 +2,7 @@ import json
 from collections import defaultdict
 
 
-def load_tls_certs(path="tls_certs.json"):
+def load_tls_certs(path="data/tls_certs/tls_certs.json"):
     with open(path, "r") as f:
         return json.load(f)
 
