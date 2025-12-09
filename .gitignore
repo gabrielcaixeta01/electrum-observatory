@@ -1,9 +1,50 @@
-# Byte-compiled / optimized / DLL files
+# ========================================
+# PYTHON
+# ========================================
 __pycache__/
-*.py[cod]
+*.pyc
+*.pyo
+*.pyd
 
 # Virtual environments
 .venv/
+venv/
+env/
 
-# notebooks
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
 **/.ipynb_checkpoints/
+
+# ========================================
+# NEXT.JS / FRONTEND (pasta site/)
+# ========================================
+site/node_modules/
+site/.next/
+site/out/
+site/.turbo/
+site/.swc/
+site/.cache/
+
+# Remove SWC binaries from tracking
+site/node_modules/@next/swc-*/**
+
+# Local environment variables
+site/.env
+site/.env.local
+site/.env.*.local
+
+# VSCode / IDE
+.vscode/
+.idea/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ========================================
+# OS / Misc
+# ========================================
+.DS_Store
+Thumbs.db

@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500">
+  <!-- fundo -->
+  <rect x="0" y="0" width="500" height="500" fill="#050814"/>
+
+  <!-- marcador de seta -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <polygon points="0,0 10,5 0,10" fill="#9ca3af"/>
+    </marker>
+  </defs>
+
+  <!-- título -->
+  <text x="250" y="45" fill="#f9fafb" font-family="Arial, sans-serif"
+        font-size="22" text-anchor="middle">
+    Electrum Observatory Methodology
+  </text>
+
+  <!-- caixas (retângulos arredondados) -->
+
+  <!-- Network Discovery (topo) -->
+  <rect x="160" y="90" width="180" height="40" rx="16"
+        fill="#0b1022" stroke="#3b82f6" stroke-width="2"/>
+  <text x="250" y="115" fill="#e5e7eb" font-family="Arial, sans-serif"
+        font-size="14" text-anchor="middle">
+    Network Discovery
+  </text>
+
+  <!-- Metadata Scanning (cima-direita) -->
+  <rect x="300" y="170" width="180" height="40" rx="16"
+        fill="#0b1022" stroke="#3b82f6" stroke-width="2"/>
+  <text x="390" y="195" fill="#e5e7eb" font-family="Arial, sans-serif"
+        font-size="14" text-anchor="middle">
+    Metadata Scanning
+  </text>
+
+  <!-- Fingerprinting (baixo-direita) -->
+  <rect x="300" y="290" width="180" height="40" rx="16"
+        fill="#0b1022" stroke="#3b82f6" stroke-width="2"/>
+  <text x="390" y="315" fill="#e5e7eb" font-family="Arial, sans-serif"
+        font-size="14" text-anchor="middle">
+    Fingerprinting
+  </text>
+
+  <!-- Normalization (bottom) -->
+  <rect x="160" y="360" width="180" height="40" rx="16"
+        fill="#0b1022" stroke="#3b82f6" stroke-width="2"/>
+  <text x="250" y="385" fill="#e5e7eb" font-family="Arial, sans-serif"
+        font-size="14" text-anchor="middle">
+    Normalization
+  </text>
+
+  <!-- Clustering (baixo-esquerda) -->
+  <rect x="20" y="290" width="180" height="40" rx="16"
+        fill="#0b1022" stroke="#3b82f6" stroke-width="2"/>
+  <text x="110" y="315" fill="#e5e7eb" font-family="Arial, sans-serif"
+        font-size="14" text-anchor="middle">
+    Clustering
+  </text>
+
+  <!-- Reporting (cima-esquerda) -->
+  <rect x="20" y="170" width="180" height="40" rx="16"
+        fill="#0b1022" stroke="#3b82f6" stroke-width="2"/>
+  <text x="110" y="195" fill="#e5e7eb" font-family="Arial, sans-serif"
+        font-size="14" text-anchor="middle">
+    Reporting
+  </text>
+
+  <!-- setas curvas (todas fora das boxes) -->
+
+  <!-- Discovery -> Metadata -->
+  <path d="M 250 130 C 290 145 320 155 340 165"
+        fill="none" stroke="#9ca3af" stroke-width="2"
+        marker-end="url(#arrowhead)"/>
+
+  <!-- Metadata -> Fingerprinting -->
+  <path d="M 380 210 C 400 230 410 255 405 280"
+        fill="none" stroke="#9ca3af" stroke-width="2"
+        marker-end="url(#arrowhead)"/>
+
+  <!-- Fingerprinting -> Normalization -->
+  <path d="M 340 330 C 310 345 285 352 250 355"
+        fill="none" stroke="#9ca3af" stroke-width="2"
+        marker-end="url(#arrowhead)"/>
+
+  <!-- Normalization -> Clustering -->
+  <path d="M 210 360 C 180 350 155 340 130 330"
+        fill="none" stroke="#9ca3af" stroke-width="2"
+        marker-end="url(#arrowhead)"/>
+
+  <!-- Clustering -> Reporting -->
+  <path d="M 80 290 C 65 265 60 240 70 215"
+        fill="none" stroke="#9ca3af" stroke-width="2"
+        marker-end="url(#arrowhead)"/>
+
+  <!-- Reporting -> Discovery -->
+  <path d="M 150 170 C 185 155 210 145 240 135"
+        fill="none" stroke="#9ca3af" stroke-width="2"
+        marker-end="url(#arrowhead)"/>
+
+</svg>

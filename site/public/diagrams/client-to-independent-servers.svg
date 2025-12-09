@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="260" viewBox="0 0 500 260">
+  <!-- Background -->
+  <rect x="0" y="0" width="500" height="260" fill="#050814"/>
+
+  <!-- Arrow marker -->
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <polygon points="0,0 10,5 0,10" fill="#9ca3af"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="250" y="35" fill="#f9fafb" font-family="Arial, sans-serif"
+        font-size="18" text-anchor="middle">
+    Electrum Client → Independent Servers
+  </text>
+
+  <!-- Electrum client (left box) -->
+  <rect x="40" y="100" width="150" height="60" rx="14"
+        fill="#0b1022" stroke="#3b82f6" stroke-width="2"/>
+  <text x="115" y="130" fill="#e5e7eb" font-family="Arial, sans-serif"
+        font-size="14" text-anchor="middle">
+    Electrum Client
+  </text>
+  <text x="115" y="148" fill="#9ca3af" font-family="Arial, sans-serif"
+        font-size="10" text-anchor="middle">
+    (wallet app)
+  </text>
+
+  <!-- Server 1 -->
+  <rect x="310" y="60" width="150" height="50" rx="12"
+        fill="#0b1022" stroke="#3b82f6" stroke-width="2"/>
+  <text x="385" y="88" fill="#e5e7eb" font-family="Arial, sans-serif"
+        font-size="12" text-anchor="middle">
+    Server A
+  </text>
+
+  <!-- Server 2 -->
+  <rect x="310" y="120" width="150" height="50" rx="12"
+        fill="#0b1022" stroke="#3b82f6" stroke-width="2"/>
+  <text x="385" y="148" fill="#e5e7eb" font-family="Arial, sans-serif"
+        font-size="12" text-anchor="middle">
+    Server B
+  </text>
+
+  <!-- Server 3 -->
+  <rect x="310" y="180" width="150" height="50" rx="12"
+        fill="#0b1022" stroke="#3b82f6" stroke-width="2"/>
+  <text x="385" y="208" fill="#e5e7eb" font-family="Arial, sans-serif"
+        font-size="12" text-anchor="middle">
+    Server C
+  </text>
+
+  <!-- Arrows from client to each server -->
+  <path d="M 190 130 C 230 110 260 95 310 85"
+        fill="none" stroke="#9ca3af" stroke-width="2"
+        marker-end="url(#arrowhead)"/>
+
+  <path d="M 190 130 C 230 130 260 130 310 145"
+        fill="none" stroke="#9ca3af" stroke-width="2"
+        marker-end="url(#arrowhead)"/>
+
+  <path d="M 190 130 C 230 150 260 165 310 195"
+        fill="none" stroke="#9ca3af" stroke-width="2"
+        marker-end="url(#arrowhead)"/>
+
+  <!-- Note: servers are independent (no links between them) -->
+</svg>
