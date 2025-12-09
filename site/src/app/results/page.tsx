@@ -85,15 +85,20 @@ export default function ResultsPage() {
         </p>
 
         {
-        <SiteImage
+          <SiteImage
           src="/results/high_risk_servers_signals.png"
           alt="Outlier analysis"
           width={900}
           height={500}
           className="rounded-lg border border-white/10"
-        />
+          />
         }
 
+        <div className="border border-white/10 bg-white/5 rounded-xl p-4 h-[380px] flex items-center justify-center">
+          <span className="text-gray-500 italic">Insert latency_heatmap.png here</span>
+        </div>
+      </section>
+      
       {/* --------------------- 5. Suspicious Outliers --------------------- */}
       <section>
         <h2 className="text-2xl font-semibold mb-3">Suspicious Outliers</h2>
