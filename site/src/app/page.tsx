@@ -1,3 +1,5 @@
+import SiteImage from "@/components/SiteImage";
+
 export default function HomePage() {
   return (
     <main className="max-w-5xl mx-auto px-6 py-16 space-y-16">
@@ -5,24 +7,29 @@ export default function HomePage() {
       {/* ------------------------------------------------------------ */}
       {/* HEADER */}
       {/* ------------------------------------------------------------ */}
-      <section>
-        <h1 className="text-5xl font-bold mb-6">Electrum Observatory</h1>
+      <section className="flex flex-col md:flex-row items-start gap-8">
+        <div className="flex-1">
+          <h1 className="text-5xl font-bold mb-6">Electrum Observatory</h1>
+          <p className="text-lg text-gray-300 leading-relaxed max-w-3xl">
+            Electrum is one of the most widely used Bitcoin light wallets. Because it relies on
+            remote servers instead of full validation, its trust model differs significantly
+            from Bitcoin Core. This project empirically investigates whether the Electrum server
+            ecosystem shows signs of <span className="font-semibold">centralization</span>,
+            <span className="font-semibold"> surveillance</span>,
+            <span className="font-semibold"> fingerprinting</span>, or
+            <span className="font-semibold"> honeypot-like behavior</span>.
+          </p>
 
-        <p className="text-lg text-gray-300 leading-relaxed max-w-3xl">
-          Electrum is one of the most widely used Bitcoin light wallets. Because it relies on
-          remote servers instead of full validation, its trust model differs significantly
-          from Bitcoin Core. This project empirically investigates whether the Electrum server
-          ecosystem shows signs of <span className="font-semibold">centralization</span>,
-          <span className="font-semibold"> surveillance</span>,
-          <span className="font-semibold"> fingerprinting</span>, or
-          <span className="font-semibold"> honeypot-like behavior</span>.
-        </p>
+          <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mt-4">
+            The Electrum Observatory maps the global Electrum network, analyzes server metadata,
+            performs behavioral fingerprinting, identifies suspicious clusters, and measures
+            privacy risks affecting millions of Bitcoin users.
+          </p>
+        </div>
 
-        <p className="text-lg text-gray-300 leading-relaxed max-w-3xl mt-4">
-          The Electrum Observatory maps the global Electrum network, analyzes server metadata,
-          performs behavioral fingerprinting, identifies suspicious clusters, and measures
-          privacy risks affecting millions of Bitcoin users.
-        </p>
+        <div className="shrink-0 w-full md:w-64">
+          <SiteImage src="/images/electrum.png" alt="Electrum Logo" width={256} height={256} className="w-full h-auto" />
+        </div>
       </section>
 
       {/* ------------------------------------------------------------ */}

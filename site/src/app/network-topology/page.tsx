@@ -162,11 +162,6 @@ export default function NetworkTopologyPage() {
           <li>Clusters inferred from certificate reuse</li>
         </ul>
 
-        <div className="mt-4 p-6 border border-white/10 bg-white/5 rounded-xl text-sm text-gray-400 italic">
-          {/* <Image src="/results/infra-concentration.png" ... /> */}
-          (Chart placeholder: Hosting provider breakdown)
-        </div>
-
         {/* ---------------- 4.4 Software Diversity ---------------- */}
         <h3 className="text-2xl font-semibold mt-10 mb-3">4.4 Software Diversity</h3>
         <ul className="list-disc ml-6 text-gray-300 space-y-2">
@@ -182,9 +177,15 @@ export default function NetworkTopologyPage() {
           and whether servers sit behind load balancers or monitoring layers.
         </p>
 
-        <div className="mt-4 p-6 border border-white/10 bg-white/5 rounded-xl text-sm text-gray-400 italic">
-          {/* <Image src="/results/latency-graph.png" ... /> */}
-          (Graph placeholder: Latency distribution)
+        <div className="mt-4 p-6 border w-fit border-white/10 bg-white/5 rounded-xl text-sm text-gray-400 italic">
+          <SiteImage
+            src="/results/latency_density.png"
+            alt="Latency Density"
+            width={500}
+            height={500}
+            className="mx-auto"
+            unoptimized
+          />
         </div>
       </section>
 
