@@ -94,9 +94,15 @@ export default function MethodologyPage() {
           <li>Queue each discovered peer until depth limit is reached</li>
         </ul>
 
-        <div className="mt-6 p-5 bg-white/5 border border-white/10 rounded-xl text-gray-400 italic">
-          {/* <Image src="/results/network-map.png" ... /> */}
-          (Placeholder: Global Electrum network map)
+        <div className="mt-6 p-5 bg-white/5 border w-fit border-white/10 rounded-xl text-gray-400 italic">
+          <SiteImage
+            src="/results/global_network_map.png"
+            alt="Global Network Map"
+            width={500}
+            height={500}
+            className="mx-auto"
+            unoptimized
+          />
         </div>
       </section>
 
