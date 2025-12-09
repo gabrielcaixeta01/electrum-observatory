@@ -20,11 +20,10 @@ export default function Navbar() {
           {/* DESKTOP LINKS */}
           <div className="hidden md:flex gap-6 text-sm text-gray-300">
             <Link href="/methodology">Methodology</Link>
-            <Link href="/results">Results</Link>
             <Link href="/server-metadata">Server Metadata</Link>
-            <Link href="/network-topology">Network Topology</Link>
-            <Link href="/dataset">Dataset</Link>
             <Link href="/honeypots">Honeypot Indicators</Link>
+            <Link href="/results">Results</Link>
+            <Link href="/network-topology">Network Topology</Link>
             <Link href="/about">About</Link>
           </div>
 
@@ -80,10 +79,6 @@ export default function Navbar() {
 
           <Link href="/network-topology" onClick={() => setOpen(false)}>
             Network Topology
-          </Link>
-
-          <Link href="/dataset" onClick={() => setOpen(false)}>
-            Dataset
           </Link>
 
           <Link href="/honeypots" onClick={() => setOpen(false)}>

@@ -73,11 +73,41 @@ export default function NetworkTopologyPage() {
         </div>
       </section>
 
+      {/* ------------------------------------------------------------- */}
+      {/* 3. Raw Server Metadata */}
+      {/* ------------------------------------------------------------- */}
+      <section>
+        <h2 className="text-3xl font-semibold mb-4">3. Raw Server Metadata</h2>
+
+        <p className="text-gray-400 max-w-3xl mb-4">
+          Raw JSON output collected during active network scanning.
+          This includes IP reachability, banner strings, protocol negotiation,
+          TLS fingerprints, and basic latency measurements.
+        </p>
+
+        <h3 className="text-xl font-semibold mb-3">Technique Used</h3>
+        <ul className="list-disc ml-6 text-gray-300 space-y-1">
+          <li>Asynchronous Electrum protocol handshake</li>
+          <li>Direct TCP and SSL probing</li>
+          <li>TLS certificate extraction (OpenSSL API)</li>
+          <li>Response parsing for metadata fields</li>
+        </ul>
+
+        <div className="mt-6 p-5 mx-auto md:mx-0 bg-white/5 border w-fit border-white/10 rounded-xl text-gray-400 italic">
+          <SiteImage
+            src="/results/raw-sample.png"
+            alt="Placeholder: preview of raw metadata JSON"
+            width={300}
+            height={300}
+          />
+        </div>
+      </section>
+
       {/* ------------------------------------------------------------------ */}
-      {/* 3. Public Topology Characteristics */}
+      {/* 4. Public Topology Characteristics */}
       {/* ------------------------------------------------------------------ */}
       <section>
-        <h2 className="text-3xl font-semibold mb-4">3. Public Topology Characteristics</h2>
+        <h2 className="text-3xl font-semibold mb-4">4. Public Topology Characteristics</h2>
 
         <p className="text-gray-400 mb-4 max-w-3xl">
           Since servers do not connect to each other, the network resembles a
@@ -95,10 +125,10 @@ export default function NetworkTopologyPage() {
       </section>
 
       {/* ------------------------------------------------------------------ */}
-      {/* 4. Topology Metrics Measured */}
+      {/* 5. Topology Metrics Measured */}
       {/* ------------------------------------------------------------------ */}
       <section>
-        <h2 className="text-3xl font-semibold mb-4">4. Topology Metrics Measured</h2>
+        <h2 className="text-3xl font-semibold mb-4">5. Topology Metrics Measured</h2>
 
         <p className="text-gray-400 max-w-3xl mb-6">
           The Electrum Observatory measures several dimensions of network
@@ -106,8 +136,8 @@ export default function NetworkTopologyPage() {
           surveillance risks.
         </p>
 
-        {/* ---------------- 4.1 Reachability ---------------- */}
-        <h3 className="text-2xl font-semibold mt-8 mb-3">4.1 Server Count & Reachability</h3>
+        {/* ---------------- 5.1 Reachability ---------------- */}
+        <h3 className="text-2xl font-semibold mt-8 mb-3">5.1 Server Count & Reachability</h3>
         <ul className="list-disc ml-6 text-gray-300 space-y-2">
           <li>Number of reachable TCP servers</li>
           <li>Number of reachable SSL servers</li>
@@ -135,8 +165,8 @@ export default function NetworkTopologyPage() {
           />
         </div>
 
-        {/* ---------------- 4.2 Geographic Distribution ---------------- */}
-        <h3 className="text-2xl font-semibold mt-10 mb-3">4.2 Geographic Distribution</h3>
+        {/* ---------------- 5.2 Geographic Distribution ---------------- */}
+        <h3 className="text-2xl font-semibold mt-10 mb-3">5.2 Geographic Distribution</h3>
         <ul className="list-disc ml-6 text-gray-300 space-y-2">
           <li>GeoIP country-level mapping</li>
           <li>City-level clustering (when available)</li>
@@ -154,24 +184,24 @@ export default function NetworkTopologyPage() {
           />
         </div>
 
-        {/* ---------------- 4.3 Infrastructure Concentration ---------------- */}
-        <h3 className="text-2xl font-semibold mt-10 mb-3">4.3 Infrastructure Concentration</h3>
+        {/* ---------------- 5.3 Infrastructure Concentration ---------------- */}
+        <h3 className="text-2xl font-semibold mt-10 mb-3">5.3 Infrastructure Concentration</h3>
         <ul className="list-disc ml-6 text-gray-300 space-y-2">
           <li>Fraction of nodes on cloud providers</li>
           <li>Grouping by hosting provider</li>
           <li>Clusters inferred from certificate reuse</li>
         </ul>
 
-        {/* ---------------- 4.4 Software Diversity ---------------- */}
-        <h3 className="text-2xl font-semibold mt-10 mb-3">4.4 Software Diversity</h3>
+        {/* ---------------- 5.4 Software Diversity ---------------- */}
+        <h3 className="text-2xl font-semibold mt-10 mb-3">5.4 Software Diversity</h3>
         <ul className="list-disc ml-6 text-gray-300 space-y-2">
           <li>ElectrumX version distribution</li>
           <li>Electrs version distribution</li>
           <li>Presence of modified or unknown implementations</li>
         </ul>
 
-        {/* ---------------- 4.5 Latency Graph ---------------- */}
-        <h3 className="text-2xl font-semibold mt-10 mb-3">4.5 Latency Graph</h3>
+        {/* ---------------- 5.5 Latency Graph ---------------- */}
+        <h3 className="text-2xl font-semibold mt-10 mb-3">5.5 Latency Graph</h3>
         <p className="text-gray-400 max-w-3xl">
           Latency patterns help infer geographic proximity, server clustering,
           and whether servers sit behind load balancers or monitoring layers.
@@ -190,10 +220,10 @@ export default function NetworkTopologyPage() {
       </section>
 
       {/* ------------------------------------------------------------------ */}
-      {/* 5. Topology Risks */}
+      {/* 6. Topology Risks */}
       {/* ------------------------------------------------------------------ */}
       <section>
-        <h2 className="text-3xl font-semibold mb-4">5. Topology Risks</h2>
+        <h2 className="text-3xl font-semibold mb-4">6. Topology Risks</h2>
 
         <p className="text-gray-400 max-w-3xl mb-4">
           The structural properties of the Electrum network create meaningful

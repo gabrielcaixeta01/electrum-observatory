@@ -158,11 +158,6 @@ export default function MethodologyPage() {
           <li>Xpub-derived scripthash queries</li>
           <li>Timing variance and latency fingerprinting</li>
         </ul>
-
-        <div className="mt-6 p-5 bg-white/5 border border-white/10 rounded-xl text-gray-400 italic">
-          {/* <Image src="/results/fingerprint-matrix.png" ... /> */}
-          (Placeholder: behavioral fingerprint matrix)
-        </div>
       </section>
 
       {/* ------------------------------------------------------------------ */}
@@ -186,35 +181,10 @@ export default function MethodologyPage() {
       </section>
 
       {/* ------------------------------------------------------------------ */}
-      {/* 6. Clustering & Analysis */}
+      {/* 6. Honeypot Indicators */}
       {/* ------------------------------------------------------------------ */}
       <section>
-        <h2 className="text-3xl font-semibold mb-4">6. Clustering & Analysis</h2>
-
-        <p className="text-gray-400 max-w-4xl leading-relaxed mb-4">
-          Machine-learning techniques are used to detect clusters of servers that share
-          similar behavior, certificates, infrastructure, or latency patterns. These
-          clusters often reveal common operators or potential surveillance infrastructure.
-        </p>
-
-        <ul className="list-disc ml-6 text-gray-300 space-y-2">
-          <li>DBSCAN for identifying identical behavior clusters</li>
-          <li>K-Means for protocol-level grouping</li>
-          <li>PCA for reducing behavioral dimensionality</li>
-          <li>Hierarchical clustering for operator inference</li>
-        </ul>
-
-        <div className="mt-6 p-5 bg-white/5 border border-white/10 rounded-xl text-gray-400 italic">
-          {/* <Image src="/results/cluster-dendrogram.png" ... /> */}
-          (Placeholder: clustering dendrogram)
-        </div>
-      </section>
-
-      {/* ------------------------------------------------------------------ */}
-      {/* 7. Honeypot Indicators */}
-      {/* ------------------------------------------------------------------ */}
-      <section>
-        <h2 className="text-3xl font-semibold mb-4">7. Honeypot Indicators</h2>
+        <h2 className="text-3xl font-semibold mb-4">6. Honeypot Indicators</h2>
 
         <p className="text-gray-400 max-w-4xl leading-relaxed mb-4">
           Servers exhibiting suspicious patterns — such as certificate reuse,
@@ -233,10 +203,10 @@ export default function MethodologyPage() {
       </section>
 
       {/* ------------------------------------------------------------------ */}
-      {/* 8. Output & Reporting */}
+      {/* 7. Output & Reporting */}
       {/* ------------------------------------------------------------------ */}
       <section>
-        <h2 className="text-3xl font-semibold mb-4">8. Output & Reporting</h2>
+        <h2 className="text-3xl font-semibold mb-4">7. Output & Reporting</h2>
 
         <p className="text-gray-400 max-w-3xl">
           Final outputs include the global server dataset, behavioral fingerprints,
@@ -246,10 +216,10 @@ export default function MethodologyPage() {
       </section>
 
       {/* ------------------------------------------------------------------ */}
-      {/* 9. Ethical Standards */}
+      {/* 8. Ethical Standards */}
       {/* ------------------------------------------------------------------ */}
       <section>
-        <h2 className="text-3xl font-semibold mb-4">9. Ethical Standards</h2>
+        <h2 className="text-3xl font-semibold mb-4">8. Ethical Standards</h2>
 
         <p className="text-gray-400 max-w-3xl">
           All scanning adheres to strict ethical guidelines. Only publicly reachable
