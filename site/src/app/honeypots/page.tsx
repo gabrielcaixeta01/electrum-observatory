@@ -258,12 +258,58 @@ export default function HoneypotsPage() {
 
         <div className="mt-6 p-5 mx-auto md:mx-0 bg-white/5 border w-fit border-white/10 rounded-xl text-gray-400 italic">
           <SiteImage
-            src="/results/honeypot_score.png"
+            src="/results/json_example.png"
             alt="Honeypot score JSON"
             width={300}
             height={300}
           />
         </div>
+
+        {/* ---------------- 5.1 Honeypot Score Distribution ---------------- */}
+        <h3 className="text-2xl font-semibold mt-10 mb-3">5.1 Honeypot Score Distribution</h3>
+        <p className="text-gray-400 max-w-3xl">
+          This histogram shows the distribution of honeypot scores across all servers.
+        </p>
+
+        <div className="mt-4 p-6 border w-fit border-white/10 bg-white/5 rounded-xl text-sm text-gray-400 italic">
+          <SiteImage
+            src="/results/honeypot_score.png"
+            alt="Latency Density"
+            width={500}
+            height={500}
+            className="mx-auto"
+            unoptimized
+          />
+        </div>
+
+        {/* ---------------- 5.2 Top High-Risk Servers ---------------- */}
+        <h3 className="text-2xl font-semibold mt-10 mb-3">5.2 Top High-Risk Servers</h3>
+
+        <div className="mt-4 p-6 border w-fit border-white/10 bg-white/5 rounded-xl text-sm text-gray-400 italic">
+          <SiteImage
+            src="/results/high_risk_servers.png"
+            alt="Latency Density"
+            width={500}
+            height={500}
+            className="mx-auto"
+            unoptimized
+          />
+        </div>
+
+        {/* ---------------- 5.3 Most Common Signals in High-Risk Servers ---------------- */}
+        <h3 className="text-2xl font-semibold mt-10 mb-3">5.3 Most Common Signals in High-Risk Servers</h3>
+
+        <div className="mt-4 p-6 border w-fit border-white/10 bg-white/5 rounded-xl text-sm text-gray-400 italic">
+          <SiteImage
+            src="/results/high_risk_servers_signals.png"
+            alt="Latency Density"
+            width={500}
+            height={500}
+            className="mx-auto"
+            unoptimized
+          />
+        </div>
+
       </section>
     </main>
   );

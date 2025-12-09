@@ -64,42 +64,6 @@ export default function ResultsPage() {
           />
         </div>
       </section>
-
-      {/* --------------------- 4. High Risk Signals --------------------- */}
-      <section>
-        <h2 className="text-2xl font-semibold mb-3">Most Common High-Risk Signals</h2>
-        <p className="text-gray-400 mb-4 max-w-2xl">
-          Frequency of behavioral patterns and indicators commonly found in high-risk or potentially malicious Electrum servers.
-        </p>
-
-        <div className="border border-white/10 bg-white/5 rounded-xl p-4 h-fit w-fit flex items-center justify-center">
-          <SiteImage
-            src="/results/high_risk_servers_signals.png"
-            alt="Outlier analysis"
-            width={900}
-            height={500}
-            className="rounded-lg border border-white/10"
-          />
-        </div>
-      </section>
-      
-      {/* --------------------- 5. Suspicious Outliers --------------------- */}
-      <section>
-        <h2 className="text-2xl font-semibold mb-3">Suspicious Outliers</h2>
-        <p className="text-gray-400 mb-4 max-w-2xl">
-          Servers that deviate significantly from expected Electrum protocol behavior.
-        </p>
-
-        <div className="border border-white/10 bg-white/5 rounded-xl p-4 h-fit w-fit flex items-center justify-center">
-          <SiteImage
-            src="/results/high_risk_servers.png"
-            alt="Outlier analysis"
-            width={900}
-            height={500}
-            className="rounded-lg border border-white/10"
-          />
-        </div>
-      </section>
     </main>
   );
 }
