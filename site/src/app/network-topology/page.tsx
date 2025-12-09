@@ -128,9 +128,15 @@ export default function NetworkTopologyPage() {
           <li>ISP/ASN distribution</li>
         </ul>
 
-        <div className="mt-4 p-6 border border-white/10 bg-white/5 rounded-xl text-sm text-gray-400 italic">
-          {/* <Image src="/results/geo-map.png" ... /> */}
-          (Map placeholder: Server geographic heatmap)
+        <div className="mt-4 p-6 border border-white/10 w-fit bg-white/5 rounded-xl text-sm text-gray-400 italic">
+          <SiteImage
+            src="/results/global_network_map.png"
+            alt="Global Network Map"
+            width={500}
+            height={500}
+            className="mx-auto"
+            unoptimized
+          />
         </div>
 
         {/* ---------------- 4.3 Infrastructure Concentration ---------------- */}
