@@ -33,29 +33,7 @@ export default function ResultsPage() {
         </div>
       </section>
 
-      {/* --------------------- 2. Behavioral Clustering --------------------- */}
-      <section>
-        <h2 className="text-2xl font-semibold mb-3">Behavioral Clustering</h2>
-        <p className="text-gray-400 mb-4 max-w-2xl">
-          Clusters derived from timing profiles, response formats, and behavioral signatures.
-        </p>
-
-        {/* 
-        <Image
-          src="/results/behavior_clusters.png"
-          alt="Behavior clustering diagram"
-          width={900}
-          height={500}
-          className="rounded-lg border border-white/10"
-        />
-        */}
-
-        <div className="border border-white/10 bg-white/5 rounded-xl p-4 h-[380px] flex items-center justify-center">
-          <span className="text-gray-500 italic">Insert behavior_clusters.png here</span>
-        </div>
-      </section>
-
-      {/* --------------------- 3. TLS Certificate Reuse --------------------- */}
+      {/* --------------------- 2. TLS Certificate Reuse --------------------- */}
       <section>
         <h2 className="text-2xl font-semibold mb-3">TLS Certificate Reuse</h2>
         <p className="text-gray-400 mb-4 max-w-2xl">
@@ -64,7 +42,7 @@ export default function ResultsPage() {
 
         { 
         <SiteImage
-          src="/results/certificate_cluster.png"
+          src="/results/certificate_clusters.png"
           alt="TLS certificate reuse graph"
           width={900}
           height={500}
@@ -77,7 +55,7 @@ export default function ResultsPage() {
         </div>
       </section>
 
-      {/* --------------------- 4. Latency --------------------- */}
+      {/* --------------------- 3. Latency --------------------- */}
       <section>
         <h2 className="text-2xl font-semibold mb-3">Latency</h2>
         <p className="text-gray-400 mb-4 max-w-2xl">
@@ -99,7 +77,7 @@ export default function ResultsPage() {
         </div>
       </section>
 
-      {/* --------------------- 5. Suspicious Outliers --------------------- */}
+      {/* --------------------- 4. High Risk Signals --------------------- */}
       <section>
         <h2 className="text-2xl font-semibold mb-3">Most Common High-Risk Signals</h2>
         <p className="text-gray-400 mb-4 max-w-2xl">
@@ -116,7 +94,7 @@ export default function ResultsPage() {
         />
         }
 
-      {/* --------------------- 6. Suspicious Outliers --------------------- */}
+      {/* --------------------- 5. Suspicious Outliers --------------------- */}
       <section>
         <h2 className="text-2xl font-semibold mb-3">Suspicious Outliers</h2>
         <p className="text-gray-400 mb-4 max-w-2xl">
@@ -131,7 +109,7 @@ export default function ResultsPage() {
           height={500}
           className="rounded-lg border border-white/10"
         />
-        */}
+        }
 
         <div className="border border-white/10 bg-white/5 rounded-xl p-4 h-[380px] flex items-center justify-center">
           <span className="text-gray-500 italic">Insert anomalies.png here</span>
