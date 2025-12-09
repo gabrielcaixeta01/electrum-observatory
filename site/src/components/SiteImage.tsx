@@ -1,13 +1,15 @@
 "use client";
 
 import Image, { ImageProps } from "next/image";
+import { useEffect, useState } from "react";
 
 export default function SiteImage(props: ImageProps) {
-  const isProd =
-    typeof window !== "undefined" &&
-    window.location.pathname.startsWith("/electrum-observatory");
+  const [prefix, setPrefix] = useState("");
 
-  const prefix = isProd ? "/electrum-observatory" : "";
+  useEffect(() => {
+    const isProd = window.location.pathname.startsWith("/electrum-observatory");
+    setPrefix(isProd ? "/electrum-observatory" : "");
+  }, []);
 
   return <Image {...props} src={prefix + props.src} alt={props.alt ?? ""} />;
 }
