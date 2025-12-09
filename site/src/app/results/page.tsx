@@ -11,22 +11,22 @@ export default function ResultsPage() {
         images once analysis is complete.
       </p>
 
-      {/* --------------------- 1. Global Network Map --------------------- */}
+      {/* --------------------- 1. Software Diversity --------------------- */}
       <section>
-        <h2 className="text-2xl font-semibold mb-3">Global Electrum Server Distribution</h2>
+        <h2 className="text-2xl font-semibold mb-3">Electrum Server Diversity</h2>
         <p className="text-gray-400 mb-4 max-w-2xl">
-          Geolocation map showing density and distribution of reachable Electrum servers.
+         Breakdown of server implementations across the network
         </p>
 
-        {/* 
-        <Image
-          src="/results/world_map.png"
+        { 
+        <SiteImage
+          src="/results/software_diversity.png"
           alt="Electrum network world map"
           width={900}
           height={500}
           className="rounded-lg border border-white/10"
         />
-        */}
+        }
 
         <div className="border border-white/10 bg-white/5 rounded-xl p-4 h-[380px] flex items-center justify-center">
           <span className="text-gray-500 italic">Insert world_map.png here</span>
@@ -62,37 +62,37 @@ export default function ResultsPage() {
           Graph showing certificate reuse, shared fingerprints, and infrastructure clusters.
         </p>
 
-        {/* 
-        <Image
-          src="/results/cert_reuse.png"
+        { 
+        <SiteImage
+          src="/results/certificate_cluster.png"
           alt="TLS certificate reuse graph"
           width={900}
           height={500}
           className="rounded-lg border border-white/10"
         />
-        */}
+        }
 
         <div className="border border-white/10 bg-white/5 rounded-xl p-4 h-[380px] flex items-center justify-center">
           <span className="text-gray-500 italic">Insert cert_reuse.png here</span>
         </div>
       </section>
 
-      {/* --------------------- 4. Latency Heatmap --------------------- */}
+      {/* --------------------- 4. Latency --------------------- */}
       <section>
-        <h2 className="text-2xl font-semibold mb-3">Latency Heatmaps</h2>
+        <h2 className="text-2xl font-semibold mb-3">Latency</h2>
         <p className="text-gray-400 mb-4 max-w-2xl">
-          Heatmaps of latency measurements across regions and repeated probes.
+          Analysis of server response times
         </p>
 
-        {/* 
-        <Image
-          src="/results/latency_heatmap.png"
+        { 
+        <SiteImage
+          src="/results/latency_graph.png"
           alt="Latency heatmap"
           width={900}
           height={500}
           className="rounded-lg border border-white/10"
         />
-        */}
+        }
 
         <div className="border border-white/10 bg-white/5 rounded-xl p-4 h-[380px] flex items-center justify-center">
           <span className="text-gray-500 italic">Insert latency_heatmap.png here</span>
@@ -101,14 +101,31 @@ export default function ResultsPage() {
 
       {/* --------------------- 5. Suspicious Outliers --------------------- */}
       <section>
+        <h2 className="text-2xl font-semibold mb-3">Most Common High-Risk Signals</h2>
+        <p className="text-gray-400 mb-4 max-w-2xl">
+          Frequency of behavioral patterns and indicators commonly found in high-risk or potentially malicious Electrum servers.
+        </p>
+
+        {
+        <SiteImage
+          src="/results/high_risk_servers_signals.png"
+          alt="Outlier analysis"
+          width={900}
+          height={500}
+          className="rounded-lg border border-white/10"
+        />
+        }
+
+      {/* --------------------- 6. Suspicious Outliers --------------------- */}
+      <section>
         <h2 className="text-2xl font-semibold mb-3">Suspicious Outliers</h2>
         <p className="text-gray-400 mb-4 max-w-2xl">
           Servers that deviate significantly from expected Electrum protocol behavior.
         </p>
 
-        {/* 
+        { 
         <Image
-          src="/results/anomalies.png"
+          src="/results/high_risk_servers.png"
           alt="Outlier analysis"
           width={900}
           height={500}
