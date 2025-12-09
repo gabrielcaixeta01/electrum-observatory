@@ -1,4 +1,5 @@
 import SiteImage from "@/components/SiteImage";
+import Link from "next/link";
 
 export default function MethodologyPage() {
   return (
@@ -215,6 +216,14 @@ export default function MethodologyPage() {
           cases — are flagged for deeper analysis. The goal is not to accuse operators,
           but to identify anomalous infrastructure that warrants investigation.
         </p>
+
+        <Link
+          href="/honeypots"
+          className="inline-block px-5 py-2 rounded-lg bg-white/10 border border-white/20 
+                      text-gray-200 hover:bg-white/20 transition"
+        >
+          Honeypot Indicators
+        </Link>
       </section>
 
       {/* ------------------------------------------------------------------ */}

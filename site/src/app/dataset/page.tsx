@@ -33,7 +33,6 @@ export default function DatasetPage() {
           <li>Response parsing for metadata fields</li>
         </ul>
 
-        {/* Notebook link */}
         <Link
           href="#"
           target="_blank"
@@ -42,9 +41,7 @@ export default function DatasetPage() {
           Open Notebook (Raw Metadata)
         </Link>
 
-        {/* Placeholder for image */}
         <div className="mt-6 p-5 mx-auto md:mx-0 bg-white/5 border w-fit border-white/10 rounded-xl text-gray-400 italic">
-          {/* <Image src="/results/raw-sample.png" ... /> */}
           <SiteImage
             src="/results/raw-sample.png"
             alt="Placeholder: preview of raw metadata JSON"
@@ -153,44 +150,14 @@ export default function DatasetPage() {
           Open Notebook (TLS Analysis)
         </Link>
 
-        <div className="mt-6 p-5 bg-white/5 border border-white/10 rounded-xl text-gray-400 italic">
-          {/* <Image src="/results/tls-heatmap.png" ... /> */}
-          (Placeholder: TLS certificate heatmap)
-        </div>
-      </section>
-
-      {/* ------------------------------------------------------------- */}
-      {/* 5. Clustering Results */}
-      {/* ------------------------------------------------------------- */}
-      <section>
-        <h2 className="text-3xl font-semibold mb-4">5. Clustering Results</h2>
-
-        <p className="text-gray-400 max-w-3xl mb-4">
-          Groupings of servers based on behavior, certificates, latency, and
-          infrastructure indicators. Used to identify common operators and detect
-          honeypot clusters.
-        </p>
-
-        <h3 className="text-xl font-semibold mb-3">Technique Used</h3>
-        <ul className="list-disc ml-6 text-gray-300 space-y-1">
-          <li>DBSCAN for identical-behavior cluster detection</li>
-          <li>KMeans for general behavioral grouping</li>
-          <li>PCA for dimensionality reduction</li>
-          <li>Hierarchical clustering for operator inference</li>
-        </ul>
-
-        {/* Notebook link */}
-        <Link
-          href="#"
-          target="_blank"
-          className="inline-block mt-4 px-5 py-2 rounded-lg bg-white/10 border border-white/20 text-gray-200 hover:bg-white/20 transition"
-        >
-          Open Notebook (Clustering)
-        </Link>
-
-        <div className="mt-6 p-5 bg-white/5 border border-white/10 rounded-xl text-gray-400 italic">
-          {/* <Image src="/results/clustering.png" ... /> */}
-          (Placeholder: cluster dendrogram)
+        <div className="mt-6 p-5 bg-white/5 border w-fit border-white/10 rounded-xl text-gray-400 italic">
+          <SiteImage
+            src="/results/certificate_clusters.png"
+            alt="TLS certificate reuse graph"
+            width={900}
+            height={500}
+            className="rounded-lg border border-white/10"
+          />
         </div>
       </section>
     </main>

@@ -1,4 +1,4 @@
-import Image from "next/image";
+import SiteImage from '@/components/SiteImage';
 
 export default function HoneypotsPage() {
   return (
@@ -255,6 +255,15 @@ export default function HoneypotsPage() {
           <br />
           <strong>70–100</strong> HIGH RISK — candidate for deeper forensic analysis.
         </p>
+
+        <div className="mt-6 p-5 mx-auto md:mx-0 bg-white/5 border w-fit border-white/10 rounded-xl text-gray-400 italic">
+          <SiteImage
+            src="/results/honeypot_score.png"
+            alt="Honeypot score JSON"
+            width={300}
+            height={300}
+          />
+        </div>
       </section>
     </main>
   );
