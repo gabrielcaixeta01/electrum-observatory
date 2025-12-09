@@ -114,10 +114,25 @@ export default function NetworkTopologyPage() {
           <li>Success/failure connection ratios</li>
         </ul>
 
-        {/* Placeholder for future image */}
-        <div className="mt-4 p-6 border border-white/10 bg-white/5 rounded-xl text-sm text-gray-400 italic">
-          {/* <Image src="/results/reachability.png" ... /> */}
-          (Graph placeholder: Reachability distribution)
+        <div className="mt-4 p-6 border border-white/10 w-fit bg-white/5 rounded-xl text-sm text-gray-400 italic">
+          <SiteImage
+            src="/results/reachability_distribution.png"
+            alt="Reachability Distribution"
+            width={500}
+            height={500}
+            className="mx-auto"
+            unoptimized
+          />
+        </div>
+        <div className="mt-4 p-6 border border-white/10 w-fit bg-white/5 rounded-xl text-sm text-gray-400 italic">
+          <SiteImage
+            src="/results/protocol_availability.png"
+            alt="Protocol Availability"
+            width={500}
+            height={500}
+            className="mx-auto"
+            unoptimized
+          />
         </div>
 
         {/* ---------------- 4.2 Geographic Distribution ---------------- */}
