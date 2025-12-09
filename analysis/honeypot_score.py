@@ -135,7 +135,7 @@ def main():
             "signals": signals,
         })
 
-    with open("honeypot_scores.json", "w") as f:
+    with open("data/honeypot_score/honeypot_scores.json", "w") as f:
         json.dump(results, f, indent=2)
 
 
